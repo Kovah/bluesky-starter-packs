@@ -1,0 +1,17 @@
+---
+import { getCollection } from 'astro:content'
+const allTags = (await getCollection('tags'))
+---
+
+<header>
+  <a href="/">
+    <h1><span class="text-gradient">Bluesky</span> Starter Packs</h1>
+  </a>
+</header>
+
+<style>
+  a {
+    color: rgb(var(--black));
+    text-decoration: none;
+  }
+</style>

@@ -1,0 +1,108 @@
+---
+import Tags from '../components/Tags.astro'
+import PageHeader from '../components/Header.astro'
+import PageFooter from '../components/Footer.astro'
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description" content="Astro description" />
+  <meta name="viewport" content="width=device-width" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="generator" content={Astro.generator} />
+  <title>{title}</title>
+</head>
+<body>
+  <PageHeader />
+  <slot />
+  <Tags />
+  <PageFooter />
+</body>
+</html>
+<style is:global>
+  :root {
+    --black: 0, 7, 15;
+    --white: 244, 246, 255;
+    --gray: 123, 147, 195;
+    --accent: 18, 131, 254;
+    --accent-light: 103, 173, 251;
+    --accent-dark: 1, 84, 176;
+    --accent-gradient: linear-gradient(
+      45deg,
+      rgb(var(--accent-dark)),
+      rgb(var(--accent)) 30%,
+      white 60%
+    );
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --white: 0, 7, 15;
+      --black: 244, 246, 255;
+      --gray: 123, 147, 195;
+      --accent: 18, 131, 254;
+      --accent-dark: 103, 173, 251;
+      --accent-light: 1, 84, 176;
+      --accent-gradient: linear-gradient(
+        45deg,
+        rgb(var(--accent-dark)),
+        rgb(var(--accent)) 30%,
+        white 60%
+      );
+    }
+  }
+
+  html {
+    font-family: system-ui, sans-serif;
+    background: rgb(var(--white));
+    color: rgb(var(--black));
+  }
+
+  code {
+    font-family: Menlo,
+    Monaco,
+    Lucida Console,
+    Liberation Mono,
+    DejaVu Sans Mono,
+    Bitstream Vera Sans Mono,
+    Courier New,
+    monospace;
+  }
+
+  header, main, section, footer {
+    max-width: 60rem;
+    padding: 0 2rem;
+    margin: 0 auto;
+  }
+
+  a {
+    color: rgb(var(--accent));
+  }
+
+  a:hover, a:focus {
+    color: rgb(var(--accent-dark));
+  }
+
+  h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    margin-bottom: 1em;
+  }
+
+  .text-gradient {
+    background-image: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 400%;
+    background-position: 0%;
+  }
+</style>

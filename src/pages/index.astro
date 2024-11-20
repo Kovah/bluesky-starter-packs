@@ -1,0 +1,29 @@
+---
+import Layout from '../layouts/Layout.astro'
+import PackCard from '../components/PackCard.astro'
+import Tags from '../components/Tags.astro'
+
+import { getCollection } from 'astro:content'
+
+const allPacks = (await getCollection('packs'))
+
+---
+
+<Layout title="Bluesky Starter Packs">
+  <main>
+    <ul class="cards">
+      {allPacks.map(pack => (
+        <PackCard pack={pack} />
+      ))}
+    </ul>
+  </main>
+</Layout>
+
+<style>
+  .cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding: 0;
+  }
+</style>
