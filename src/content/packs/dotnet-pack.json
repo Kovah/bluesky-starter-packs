@@ -1,0 +1,7 @@
+{
+  "title": "dotnet pack -c bsky —interactive",
+  "description": "A list of cool people in the #dotnet, tech, and adjacent communities",
+  "url": "https://bsky.app/starter-pack-short/AQZrkaS",
+  "author": "bensampica.com",
+  "tags": ["dotnet", "tech"]
+}
