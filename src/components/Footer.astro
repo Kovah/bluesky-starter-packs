@@ -1,31 +1,55 @@
+---
+import { longDescription, links } from '../_meta'
+---
+
 <footer>
   <div class="edit">
-    Edit and add Starter Packs <a href="https://github.com/Kovah/bluesky-starter-packs">on Github</a>
+    Edit and add Starter Packs <a href={links.github}>on Github</a>
   </div>
   <div class="copy">
-    <div>This website was created by <a href="https://kovah.de">Kevin Woblick</a></div>
+    <div>This website was created by <a href={links.kw_portfolio}>Kevin Woblick</a></div>
     <div class="right">
-      Follow me on <a href="https://bsky.app/profile/kevin.woblick.com">Bsky</a>
-      and <a href="https://buymeacoffee.com/kevinwoblick">say Thanks</a>
+      Follow me on <a href={links.kw_bluesky}>Bsky</a>
+      and <a href={links.donate}>say Thanks</a>
     </div>
+  </div>
+  <div class="about">
+    {longDescription}
   </div>
 </footer>
 
 <style>
-footer {
-  margin-top: 4rem;
-}
-.copy {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  margin-top: 1rem;
-  color: rgb(var(--gray))
-}
-.right {
-  text-align: right;
-}
-a {
-  text-decoration: none;
-}
+  footer {
+    margin-top: 4rem;
+  }
+
+  .about {
+    color: rgb(var(--gray));
+    font-size: 90%;
+  }
+
+  .copy {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin: 2rem auto;
+    color: rgb(var(--gray))
+  }
+
+  a {
+    text-decoration: none;
+  }
+  a:hover, a:focus {
+    text-decoration: underline;
+  }
+
+  @media (min-width: 800px) {
+    .copy {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .right {
+      text-align: right;
+    }
+  }
 </style>

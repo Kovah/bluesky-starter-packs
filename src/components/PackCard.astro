@@ -1,83 +1,91 @@
 ---
-import { getEntry } from 'astro:content';
+import { getEntry } from 'astro:content'
 
-const { pack } = Astro.props;
+const { pack } = Astro.props
 
-const packEntry = await getEntry(pack)
-const tagEntries = (await Promise.all(packEntry.data.tags.map(tag => getEntry(tag)))).filter(Boolean);
+const packEntry: any = await getEntry(pack)
+const tagEntries: Array<object> = (await Promise.all(packEntry.data.tags.map(tag => getEntry(tag)))).filter(Boolean)
 ---
 
 <li class="link-card">
-	<a href={packEntry.data.url} target="_blank" rel="noreferrer noopener" class="link">
-		<h2>{packEntry.data.title}</h2>
-		<p class="author">Author: {packEntry.data.author}</p>
-		<p class="description"><small>{packEntry.data.description}</small></p>
-	</a>
-	{tagEntries.length > 0 && (
-		<div class="tags-wrapper">
-			{tagEntries.map(tag => (
-				<a href={tag.id}>#{tag.data.name}</a>
-			))}
-		</div>
-	)}
+  <a href={packEntry.data.url} target="_blank" rel="noreferrer noopener" class="link">
+    <h2>{packEntry.data.title}</h2>
+    <p class="author">Author: {packEntry.data.author}</p>
+    <p class="description"><small>{packEntry.data.description}</small></p>
+  </a>
+  {tagEntries.length > 0 && (
+    <div class="tags-wrapper">
+      {tagEntries.map((tag: any) => (
+        <a href={'/tags/' + tag.id}>#{tag.data.name}</a>
+      ))}
+    </div>
+  )}
 </li>
 
 <style>
-	.link-card {
-		list-style: none;
-		display: flex;
-		flex-direction: column;
-		margin: 0;
-		line-height: 1.4;
-		border-radius: 8px;
-		color: var(--black);
-		border: 2px solid rgb(var(--accent-light));
-		transition: border-color 400ms cubic-bezier(0.22, 1, 0.36, 1);
-	}
-	.link-card > .link {
-		display: block;
-		padding: 1rem;
-		flex: 1;
-		color: var(--black);
-		text-decoration: none;
-	}
-	h2 {
-		margin: 0;
-		font-size: 1.25rem;
-		transition: color 400ms cubic-bezier(0.22, 1, 0.36, 1);
-	}
-	p {
-		margin-top: 0.5rem;
-		margin-bottom: 0;
-	}
-	.author {
-		font-size: 90%;
-	}
-	.description {
-		font-size: 90%;
-	}
+  .link-card {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    line-height: 1.4;
+    border-radius: 8px;
+    color: var(--black);
+    border: 2px solid rgb(var(--accent-light));
+    transition: border-color 400ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
 
-	.link-card:is(:hover, :focus-within) {
-		border-color: rgb(var(--accent-dark));
-	}
-	.link-card:is(:hover, :focus-within) h2 {
-		color: rgb(var(--accent-dark));
-	}
+  .link-card > .link {
+    display: block;
+    padding: 1rem;
+    flex: 1;
+    color: var(--black);
+    text-decoration: none;
+  }
 
-	.tags-wrapper {
-		padding: 1rem;
-		padding-top: 0;
-		display: flex;
-		flex-wrap: wrap;
-		gap: .5rem;
-		font-size: 80%;
-	}
-	.tags-wrapper a {
-		color: rgb(var(--accent));
-		text-decoration: none;
-	}
-	.tags-wrapper a:hover,.tags-wrapper a:focus {
-		color: rgb(var(--accent-dark));
-		text-decoration: underline;
-	}
+  h2 {
+    margin: 0;
+    font-size: 1.25rem;
+    transition: color 400ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  p {
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+  }
+
+  .author {
+    font-size: 90%;
+  }
+
+  .description {
+    font-size: 90%;
+  }
+
+  .link-card:is(:hover, :focus-within) {
+    border-color: rgb(var(--accent-dark));
+  }
+
+  .link-card:is(:hover, :focus-within) h2 {
+    color: rgb(var(--accent-dark));
+  }
+
+  .tags-wrapper {
+    padding: 1rem;
+    padding-top: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    font-size: 80%;
+  }
+
+  .tags-wrapper a {
+    color: rgb(var(--accent));
+    text-decoration: none;
+  }
+
+  .tags-wrapper a:hover, .tags-wrapper a:focus {
+    color: rgb(var(--accent-dark));
+    text-decoration: underline;
+  }
 </style>

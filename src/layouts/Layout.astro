@@ -2,27 +2,42 @@
 import Tags from '../components/Tags.astro'
 import PageHeader from '../components/Header.astro'
 import PageFooter from '../components/Footer.astro'
+import { siteDescription, siteTitle, siteUrl } from '../_meta'
+
 interface Props {
-  title: string;
+  title: string | null;
 }
 
 const { title } = Astro.props
+const metaTitle = title ? title + ' - ' + siteTitle : siteTitle;
 ---
 
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="description" content="Astro description" />
+
   <meta name="viewport" content="width=device-width" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <meta name="generator" content={Astro.generator} />
-  <title>{title}</title>
+  <title>{metaTitle}</title>
+  <meta name="description" content={siteDescription} />
+  <meta property="og:title" content={metaTitle}>
+  <meta property="og:description" content={siteDescription}>
+  <meta property="og:url" content={siteUrl}/>
+  <meta property="og:site_name" content={siteTitle}/>
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@kevinwoblick">
+  <meta name="twitter:creator" content="@kevinwoblick">
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:description" content={siteDescription}>
+  <meta name="application-name" content={siteTitle}>
+  <meta name="theme-color" content="#1283fe">
 </head>
 <body>
   <PageHeader />
-  <slot />
   <Tags />
+  <slot />
   <PageFooter />
 </body>
 </html>
@@ -46,10 +61,10 @@ const { title } = Astro.props
     :root {
       --white: 0, 7, 15;
       --black: 244, 246, 255;
-      --gray: 123, 147, 195;
-      --accent: 18, 131, 254;
-      --accent-dark: 103, 173, 251;
-      --accent-light: 1, 84, 176;
+      --gray: 165, 174, 191;
+      --accent: 28, 135, 255;
+      --accent-dark: 115, 180, 253;
+      --accent-light: 1, 96, 202;
       --accent-gradient: linear-gradient(
         45deg,
         rgb(var(--accent-dark)),
@@ -63,17 +78,6 @@ const { title } = Astro.props
     font-family: system-ui, sans-serif;
     background: rgb(var(--white));
     color: rgb(var(--black));
-  }
-
-  code {
-    font-family: Menlo,
-    Monaco,
-    Lucida Console,
-    Liberation Mono,
-    DejaVu Sans Mono,
-    Bitstream Vera Sans Mono,
-    Courier New,
-    monospace;
   }
 
   header, main, section, footer {
@@ -104,5 +108,22 @@ const { title } = Astro.props
     -webkit-text-fill-color: transparent;
     background-size: 400%;
     background-position: 0%;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 0;
+  }
+
+  @media (min-width: 600px) {
+    .cards {
+      grid-template-columns: 1fr 1fr;
+    }
   }
 </style>

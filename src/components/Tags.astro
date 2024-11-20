@@ -4,33 +4,33 @@ const allTags = (await getCollection('tags'))
 ---
 
 <section>
-	<ul class="tags">
-		{allTags.map(tag => (
-			<a href={'tags/' + tag.id} class="tag">#{tag.data.name}</a>
-		))}
-	</ul>
+  <ul class="tags">
+    {allTags.map(tag => (
+      <a href={'/tags/' + tag.id} class="tag">#{tag.data.name}</a>
+    ))}
+  </ul>
 </section>
 
 <style>
-	section {
-		margin-top: 4rem;
-	}
+  section {
+    margin: 4rem auto;
+  }
 
-	.tags {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 1rem;
-		padding: 0;
-		margin: 0;
-	}
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 0;
+    margin: 0;
+  }
 
-	.tag {
-		color: rgb(var(--accent));
-		text-decoration: none;
-	}
+  .tag {
+    color: rgb(var(--accent));
+    text-decoration: none;
+  }
 
-	.tag:hover, .tag:focus {
-		color: rgb(var(--accent-dark));
-		text-decoration: underline;
-	}
+  .tag:hover, .tag:focus {
+    color: rgb(var(--accent-dark));
+    text-decoration: underline;
+  }
 </style>
