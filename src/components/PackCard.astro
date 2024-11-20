@@ -4,7 +4,7 @@ import { getEntry } from 'astro:content'
 const { pack } = Astro.props
 
 const packEntry: any = await getEntry(pack)
-const tagEntries: Array<object> = (await Promise.all(packEntry.data.tags.map(tag => getEntry(tag)))).filter(Boolean)
+const tagEntries: Array<object> = (await Promise.all(packEntry.data.tags.map((tag: any) => getEntry(tag)))).filter(Boolean)
 ---
 
 <li class="link-card">
