@@ -1,13 +1,36 @@
+---
+import { getCollection } from "astro:content"
+
+const packCount = (await getCollection('packs')).length
+const tagCount = (await getCollection('tags')).length
+---
 <header>
   <a href="/">
-    <h1><span class="text-gradient">Bluesky</span> Starter Packs</h1>
+    <h1><span class="text-gradient">Bluesky</span><br> Starter Packs</h1>
   </a>
+  <div class="subline">{packCount} Starter Packs in {tagCount} Tags</div>
 </header>
 
 <style>
+  header {
+    margin: 2rem 0;
+  }
   a {
+    display: block;
     color: rgb(var(--black));
     text-decoration: none;
     transition: color 300ms;
+    margin-bottom: 2rem;
+  }
+  .subline {
+    font-size: 80%;
+    text-align: center;
+    color: rgb(var(--gray));
+    letter-spacing: 1px;
+  }
+  @media (min-width: 800px) {
+    br {
+      display: none;
+    }
   }
 </style>

@@ -82,7 +82,7 @@ const metaTitle = title ? title + ' - ' + siteTitle : siteTitle;
 
   header, main, section, footer {
     max-width: 60rem;
-    padding: 0 2rem;
+    padding: 0 1rem;
     margin: 0 auto;
   }
 
@@ -99,7 +99,7 @@ const metaTitle = title ? title + ' - ' + siteTitle : siteTitle;
     font-weight: 700;
     line-height: 1;
     text-align: center;
-    margin-bottom: 1em;
+    margin: 0;
   }
 
   .text-gradient {
@@ -117,16 +117,22 @@ const metaTitle = title ? title + ' - ' + siteTitle : siteTitle;
   .cards {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1rem;
     padding: 0;
   }
 
   @media (min-width: 600px) {
-    h1 {
-      font-size: 4rem;
+    header, main, section, footer {
+      padding: 0 2rem;
     }
     .cards {
       grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+  }
+  @media (min-width: 800px) {
+    h1 {
+      font-size: 4rem;
     }
   }
 </style>
