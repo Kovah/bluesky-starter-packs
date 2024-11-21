@@ -32,7 +32,7 @@ const tagEntries: Array<object> = (await Promise.all(packEntry.data.tags.map((ta
     border-radius: 8px;
     color: var(--black);
     border: 2px solid rgb(var(--accent-light));
-    transition: border-color 400ms cubic-bezier(0.22, 1, 0.36, 1);
+    transition: border-color var(--transition);
   }
 
   .link-card > .link {
@@ -46,7 +46,7 @@ const tagEntries: Array<object> = (await Promise.all(packEntry.data.tags.map((ta
   h2 {
     margin: 0;
     font-size: 1.25rem;
-    transition: color 400ms cubic-bezier(0.22, 1, 0.36, 1);
+    transition: color var(--transition);
   }
 
   p {

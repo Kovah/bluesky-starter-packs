@@ -55,6 +55,13 @@ const metaTitle = title ? title + ' - ' + siteTitle : siteTitle;
       rgb(var(--accent)) 30%,
       white 60%
     );
+    --accent-gradient-reverse: linear-gradient(
+      90deg,
+      rgb(var(--accent)),
+      rgb(var(--accent-dark)) 30%,
+      rgb(var(--black)) 60%
+    );
+    --transition: 400ms cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   @media (prefers-color-scheme: dark) {
@@ -103,11 +110,11 @@ const metaTitle = title ? title + ' - ' + siteTitle : siteTitle;
   }
 
   .text-gradient {
-    background-image: var(--accent-gradient);
+    background-image: var(--accent-gradient) !important;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-size: 400%;
-    background-position: 0%;
+    background-position: 0;
   }
 
   .title {

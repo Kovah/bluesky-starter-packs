@@ -6,7 +6,7 @@ const tagCount = (await getCollection('tags')).length
 ---
 <header>
   <a href="/">
-    <h1><span class="text-gradient">Bluesky</span><br> Starter Packs</h1>
+    <h1><span class="text-gradient">Bluesky</span><br> <span class="sp">Starter Packs</span></h1>
   </a>
   <div class="subline">{packCount} Starter Packs in {tagCount} Tags</div>
 </header>
@@ -21,6 +21,18 @@ const tagCount = (await getCollection('tags')).length
     text-decoration: none;
     transition: color 300ms;
     margin-bottom: 2rem;
+  }
+  a .sp {
+    background-image: var(--accent-gradient-reverse);
+    background-position: 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 400%;
+    transition: background-position var(--transition);
+  }
+  a:hover .sp, a:focus .sp {
+    background-position: 0;
+    transition: background-position var(--transition);
   }
   .subline {
     font-size: 80%;
